@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>TriStar Avatar</title>
+    
+</head>
+
+<body>
+    <header class="sticky row">
+        <h4>TriStar Avatar</h4>
+    </header>
+	  
+<div id="listTalk" style="border: 1px solid #000; height: 40px; overflow-y: scroll; margin-bottom: 5px">
+ <div id="result_text"></div>
+
+</div>
+<div id="getresult" style="color:green;"></div>
+<div id="status">Click connect to TriStar then click start talking</div>
+<div>
+<p><input id="start_recognition" style="color: #000; background-color: #ff9b00cf;" type="submit" value="Start talking" /></p>
+</div>
+
+<div>
+	<div style="float:left;width:20%;">
+		<p>RoomID
+			<input id="roomIdInput" type="text" value=""></input>
+		</p>
+		<p>
+		ClientID
+			<input id="clientIdInput" disabled type="text" value=""></input>
+		</p>
+		<p> Video coding
+			<select id="video-codec" onChange="onChangeVideoCodec();">
+				<option value="none">none</option>
+				<option value="H264">H264</option>
+				<option value="VP8">VP8</option>
+				<option value="VP9">VP9</option>
+			</select>
+		</p>
+		<button onclick="startConn();">Connect to TriStar</button>
+		<button onclick="disconnect();">Disconnect with TriStar</button>
+	    
+		<p> recieved message </p>    
+		<textarea style="height:200px;" id="messages" disabled type="text" value=""></textarea>
+	
+	</div>
+	<div style="float:right; width:80%;">
+		<video id="remote-video" autoplay playsinline controls style="width: 100%; height: 100%; border: 1px solid black;"></video>
+	</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@2020.2.1/dist/ayame.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+
+<script src="js/speech.js"></script>
+<script src="js/main.js"></script>
+<script src="js/connect.js"></script>
+<script type="text/javascript">
+    sendSpData( );
+</script>
+
+
+</body>
+
+</html>
