@@ -60,3 +60,4 @@ function onMessage(e) {
     newMessages = messages ? (messages + '\n' + e.data) : e.data;
     document.querySelector("#messages").value = newMessages;
 }
+			     
