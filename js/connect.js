@@ -46,8 +46,8 @@ const startConn = async () => {
       document.querySelector('#remote-video').srcObject = e.stream;
    });
 
-   <!--await conn.connect(null);-->
-   await conn.connect(mediaStream, { authnMetadata });
+   await conn.connect(null);
+   <!--await conn.connect(mediaStream, { authnMetadata });-->
    <!--document.querySelector('#local-video').srcObject = mediaStream;-->
 	
 };
