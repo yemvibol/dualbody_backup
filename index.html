@@ -60,7 +60,6 @@
         if (signalingKey) {
           options.signalingKey = signalingKey;
         }
-	const remoteVideo = document.querySelector('#remote-video');
         let conn;
         const disconnect = () => {
           if (conn) {
@@ -70,8 +69,7 @@
         let dataChannel = null;
         const label = 'dataChannel';
         const startConn = async () => {
-	  options.video.codec = videoCodec;
-          conn = Ayame.connection(signalingUrl, roomId, options, true);        
+          conn = Ayame.connection(signalingUrl, roomId, options, true);
           conn.on('open', async (e) => {
             dataChannel = await conn.createDataChannel(label);
             if (dataChannel) {
@@ -94,7 +92,6 @@
           const data = document.querySelector("#sendDataInput").value;
           if (dataChannel && dataChannel.readyState === 'open') {
             dataChannel.send(data);
-	    console.log(data);
           }
         };
         document.querySelector("#roomIdInput").value = roomId;
