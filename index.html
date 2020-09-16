@@ -74,12 +74,10 @@
           conn = Ayame.connection(signalingUrl, roomId, options, true);
 	  const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: false})
 	  const authnMetadata = {hoge: "fuga"};
-          conn.on('open', ({authzMetadata}) => console.log(authzMetadata));
           conn.on('addstream', async (e) => {
             console.log(e.stream);
             remoteVideo.srcObject = e.stream;
           });
-          await conn.connect(mediaStream, { authnMetadata });
 	
           conn.on('open', async (e) => {
             dataChannel = await conn.createDataChannel(label);
