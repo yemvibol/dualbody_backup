@@ -71,14 +71,7 @@
         const label = 'dataChannel';
         const startConn = async () => {
 	  options.video.codec = videoCodec;
-          conn = Ayame.connection(signalingUrl, roomId, options, true);
-	  const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: false})
-	  const authnMetadata = {hoge: "fuga"};
-          conn.on('addstream', async (e) => {
-            console.log(e.stream);
-            remoteVideo.srcObject = e.stream;
-          });
-	
+          conn = Ayame.connection(signalingUrl, roomId, options, true);        
           conn.on('open', async (e) => {
             dataChannel = await conn.createDataChannel(label);
             if (dataChannel) {
