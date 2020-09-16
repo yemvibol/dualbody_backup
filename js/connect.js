@@ -4,8 +4,8 @@ if (signalingKey) {
     options.signalingKey = signalingKey;
 }
 
-<!--options.video.direction = 'recvonly';-->
-<!--options.audio.direction = 'recvonly';-->
+options.video.direction = 'recvonly';
+options.audio.direction = 'recvonly';
 
 let conn;
 const disconnect = () => {
@@ -57,6 +57,7 @@ function sendSpData() {
 	console.log(data);
     if (dataChannel && dataChannel.readyState === 'open') {
         dataChannel.send(data);
+	console.log(data);
     }
 };
 document.querySelector("#roomIdInput").value = roomId;
