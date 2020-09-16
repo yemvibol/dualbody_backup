@@ -54,55 +54,7 @@
 
 <script src="js/speech.js"></script>
 <script src="js/main.js"></script>
-<script type="text/javascript">
-        const options = Ayame.defaultOptions;
-        options.clientId = clientId ? clientId : options.clientId;
-        if (signalingKey) {
-          options.signalingKey = signalingKey;
-        }
-        let conn;
-        const disconnect = () => {
-          if (conn) {
-            conn.disconnect();
-          }
-        }
-        let dataChannel = null;
-        const label = 'dataChannel';
-        const startConn = async () => {
-          conn = Ayame.connection(signalingUrl, roomId, options, true);
-          conn.on('open', async (e) => {
-            dataChannel = await conn.createDataChannel(label);
-            if (dataChannel) {
-              dataChannel.onmessage = onMessage;
-            }
-          });
-          conn.on('datachannel', (channel) => {
-            if (!dataChannel) {
-              dataChannel = channel;
-              dataChannel.onmessage = onMessage;
-            }
-          });
-          conn.on('disconnect', (e) => {
-            console.log(e);
-            dataChannel = null;
-          });
-          await conn.connect(null);
-        };
-        const sendSpData = () => {
-          const data = document.querySelector("#sendDataInput").value;
-          if (dataChannel && dataChannel.readyState === 'open') {
-            dataChannel.send(data);
-          }
-        };
-        document.querySelector("#roomIdInput").value = roomId;
-        document.querySelector("#clientIdInput").value = options.clientId;
-
-        function onMessage(e) {
-          const messages = document.querySelector("#messages").value;
-          newMessages = messages ? (messages + '\n' + e.data) : e.data;
-          document.querySelector("#messages").value = newMessages;
-        }
-      </script>
+<script src="js/connect.js"></script>
 <script type="text/javascript">
     sendSpData( );
 </script>
