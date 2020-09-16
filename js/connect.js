@@ -21,7 +21,7 @@ const startConn = async () => {
    conn = Ayame.connection(signalingUrl, roomId, options, true);	
    
    const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: false})
-   const authnMetadata = {hoge: "fuga"};
+   <!--const authnMetadata = {hoge: "fuga"};-->
    
    <!-- -->	
    conn.on('open', async (e) => {
